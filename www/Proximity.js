@@ -1,12 +1,9 @@
-/**
- * Created by wreid on 5/22/14.
- */
 cordova.define("com.razorfish.proximityPlugin", function(require, exports, module) { var Proximity = function() {
 };
 
 
 // Call this to register for push notifications. Content of [options] depends on whether we are working with APNS (iOS) or GCM (Android)
-    Proximity.prototype.register = function(successCallback, errorCallback, msg) {
+    Proximity.prototype.saySomething = function(successCallback, errorCallback, msg) {
         if (errorCallback == null) { errorCallback = function() {}}
 
         if (typeof errorCallback != "function")  {
@@ -19,7 +16,7 @@ cordova.define("com.razorfish.proximityPlugin", function(require, exports, modul
             return
         }
 
-        cordova.exec(successCallback, errorCallback, "PushPlugin", "register", [{"msg":msg}]);
+        cordova.exec(successCallback, errorCallback, "proximityPlugin", "saySomething", [{"msg":msg}]);
     };
 
 //-------------------------------------------------------------------
@@ -27,8 +24,8 @@ cordova.define("com.razorfish.proximityPlugin", function(require, exports, modul
     if(!window.plugins) {
         window.plugins = {};
     }
-    if (!window.plugins.pushNotification) {
-        window.plugins.pushNotification = new Proximity();
+    if (!window.plugins.proximity) {
+        window.plugins.proximity = new Proximity();
     }
 
     if (module.exports) {
