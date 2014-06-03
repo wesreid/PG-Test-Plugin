@@ -21,9 +21,12 @@
             </feature>
         </config-file>
 
-        <header-file src="src/ios/proximityPlugin.h" />
-        <source-file src="src/ios/proximityPlugin.m" />
+        <header-file src="src/ios/Implementation/AppDelegate+RadiusNetworksProximityKit.h" />
+        <source-file src="src/ios/Implementation/AppDelegate+RadiusNetworksProximityKit.m" />
+        <header-file src="src/ios/Implementation/proximityPlugin.h" />
+        <source-file src="src/ios/Implementation/proximityPlugin.m" />
 
-        <!--framework src="CoreBluetooth.framework" /-->
+        <framework src="CoreLocation.framework" />
+        <framework src="src/ios/Frameworks/ProximityKit.framework" custom="true" />
     </platform>
 </plugin>
